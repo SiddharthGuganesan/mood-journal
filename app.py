@@ -48,7 +48,7 @@ def password_gate():
 
 # ------------------ ENTRY ------------------ #
 def entry():
-    st.subheader("📝 Log Your Mood")
+    st.subheader(" Log Your Mood")
     mood = st.selectbox("How are you feeling today?", list(moodkey.keys()))
     note = st.text_input("Write a short note (optional)")
     if st.button("Log Mood"):
@@ -60,18 +60,18 @@ def entry():
             writer.writerow([date, time, mood, note])
         quote = random.choice(motqots[mood])
         st.success(f"Mood '{mood}' logged on {date} at {time}")
-        st.info(f"💬 Quote for you: _{quote}_")
+        st.info(f" Quote for you: _{quote}_")
 
 # ------------------ VIEW ------------------ #
 def view():
-    st.subheader("📖 View Past Entries")
+    st.subheader(" View Past Entries")
     try:
         with open("moodlog.csv", "r") as file:
             reader = csv.reader(file)
             data = list(reader)
         if data:
             for row in data:
-                st.write(f"📅 {row[0]} 🕒 {row[1]} | 😌 {row[2]} | 📝 {row[3]}")
+                st.write(f" {row[0]}  {row[1]} |  {row[2]} |  {row[3]}")
         else:
             st.info("No entries found yet.")
     except FileNotFoundError:
@@ -79,7 +79,7 @@ def view():
 
 # ------------------ PIE CHART ------------------ #
 def pie():
-    st.subheader("📊 Mood Distribution Pie Chart")
+    st.subheader(" Mood Distribution Pie Chart")
     try:
         with open("moodlog.csv", "r") as file:
             reader = csv.reader(file)
@@ -104,7 +104,7 @@ def pie():
 
 # ------------------ MOOD TREND GRAPH ------------------ #
 def plot():
-    st.subheader("📈 Mood Trend Over Time")
+    st.subheader(" Mood Trend Over Time")
     mood_value = {"Angry": 0, "Sad": 1, "Neutral": 2, "Happy": 3}
     dates = []
     scores = []
@@ -138,16 +138,16 @@ def plot():
 # ------------------ MAIN ------------------ #
 password_gate()
 
-st.title("🌈 Mood Journal Dashboard")
-st.markdown("Track your emotions, reflect, and grow 🌱")
+st.title(" Mood Journal Dashboard")
+st.markdown("Track your emotions, reflect, and grow ")
 
-menu = st.radio("Select an option", ["📝 Write Entry", "📖 View Entries", "📊 Mood Pie", "📈 Mood Graph"])
+menu = st.radio("Select an option", [" Write Entry", " View Entries", " Mood Pie", " Mood Graph"])
 
-if menu == "📝 Write Entry":
+if menu == " Write Entry":
     entry()
-elif menu == "📖 View Entries":
+elif menu == " View Entries":
     view()
-elif menu == "📊 Mood Pie":
+elif menu == " Mood Pie":
     pie()
-elif menu == "📈 Mood Graph":
+elif menu == " Mood Graph":
     plot()
