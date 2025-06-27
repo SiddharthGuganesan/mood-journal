@@ -19,7 +19,7 @@ st.title(" -M-O-O-D- -J-O-U-R-N-A-L- ")
 st.markdown (" Log how you feel today and get a quote based on your mood!")
 
 selected_mood_display = st.selectbox("How are you feeling today?",list(moodkey.keys()))
-selected_mood = moodkey[selected_mood_display]
+selected_mood = selected_mood_display
 
 
 note = st.text_input("Add a short note (optional):")
